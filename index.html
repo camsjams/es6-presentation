@@ -130,6 +130,45 @@
 
         <section>
             <section>
+                <h2>Template Strings</h2>
+
+                <p>
+                    in·ter·po·la·tion
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+    let total = 30;
+    let name = 'Justin';
+    let msg = `${name} your total is: ${total} (${total*1.05} with tax)`;
+
+    console.log(msg);  // "Justin your total is: 30 (31.5 with tax)"
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Angular Inline Templates</h2>
+
+                <p>
+                    Multi-line template strings
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+    template: `
+        <div class="my-directive-template">
+            <h1>Using multi-line Strings for templates</h1>
+            <p>
+                The {{::name}} of something
+            </p>
+        </div>
+        `,
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
                 <h2>Classes</h2>
 
                 <p>
@@ -153,7 +192,7 @@
                 <code><pre>
         let Cam = new Person('Cameron');
         Cam.getInfo();    // "My name is Cameron"
-                </code></pre>
+                </pre></code>
             </section>
 
             <section>
@@ -182,13 +221,13 @@
         let Justin = new Jerk();
         Justin.getInfo();    // "My name is Justin"
         Justin.isJerk();    // true
-                </code></pre>
+                </pre></code>
             </section>
 
             <section>
                 <h2>Angular Services</h2>
                 <p>
-                    Using ES6 Classes
+                    We now use a service, not factory
                 </p>
 
                 <pre><code>
@@ -203,10 +242,10 @@
             </section>
 
             <section>
-                <p>
-                    Using ES6 Classes
-                </p>
-                <h5>ES6</h5>
+                <h2>
+                    Writting Services
+                </h2>
+                <h5>Using an ES6 Class</h5>
                 <pre><code>
         class DataService {
 
@@ -222,6 +261,45 @@
 
         DataService.$inject = ['$http'];
         module.exports = DataService;
+                </code></pre>
+            </section>
+
+            <section>
+            <h2>
+                Service Dependencies
+            </h2>
+            <h5>We can have many of these</h5>
+                <pre><code>
+    class SomeService {
+
+        constructor($http, $q, $log, Dep1, Dep2, Dep3) {
+            this.$http = $http;
+            this.$q = $q;
+            this.$log = $log;
+            this.Dep1 = Dep1;
+            this.Dep2 = Dep2;
+            this.Dep3 = Dep3;
+        }
+    }
+
+    // Too redundant
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>
+                    A constructor shortcut
+                </h2>
+                <h5>Hey...remember me??</h5>
+                <pre><code>
+    class SomeService {
+
+        constructor($http, $q, $log, Dep1, Dep, Dep3) {
+            Object.assign(this, { $http, $q, $log, Dep1, Dep, Dep3 });
+        }
+    }
+
+    // Better
                 </code></pre>
             </section>
         </section>
