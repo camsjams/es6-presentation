@@ -53,9 +53,8 @@
 
             <p>
                 <small>
-                    Created by <a href="https://github.com/camsjams">Cameron Manavian</a> / <a
-                        href="http://twitter.com/camsjams">@camsjams</a><br/>
-                    Created by <a href="https://github.com/failpunk">Justin Vencel</a>
+                    Created by <a href="https://github.com/camsjams">Cameron Manavian</a> / <a href="http://twitter.com/camsjams">@camsjams</a><br/>
+                    Created by <a href="https://github.com/failpunk">Justin Vencel</a> / <a href="http://twitter.com/failpunk">@failpunk</a><br/>
                 </small>
             </p>
         </section>
@@ -126,6 +125,104 @@
                      // merge
                      var obj = Object.assign(o1, o2);
                  </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Classes</h2>
+
+                <p>
+                    Do you even prototype, bro?
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+        class Person {
+
+            constructor(name) {
+                this.name = name;
+            }
+
+            getInfo() {
+                return `My name is ${this.name}`
+            }
+        }
+                </code></pre>
+
+                <code><pre>
+        let Cam = new Person('Cameron');
+        Cam.getInfo();    // "My name is Cameron"
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Inheritance</h2>
+
+                <p>
+                    Hierarchical hell, made easy!
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+        class Jerk extends Person {
+
+            constructor(name) {
+                super(name);
+                this.jerk = true;
+            }
+
+            isJerk() {
+                return this.jerk;
+            }
+        }
+                </code></pre>
+
+                <code><pre>
+        let Justin = new Jerk();
+        Justin.getInfo();    // "My name is Justin"
+        Justin.isJerk();    // true
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Angular Services</h2>
+                <p>
+                    Using ES6 Classes
+                </p>
+
+                <pre><code>
+        app.service('DataService', require('./DataService'));
+
+        // or
+
+        import { DataService } from './DataService';
+        app.service('DataService', DataService);
+                </code></pre>
+
+            </section>
+
+            <section>
+                <p>
+                    Using ES6 Classes
+                </p>
+                <h5>ES6</h5>
+                <pre><code>
+        class DataService {
+
+            constructor($http) {
+                this.$http = $http;
+            }
+
+            getPapers() {
+                return this.$http.get('/api/papers')
+                    .then((response) => response.data);
+            }
+        }
+
+        DataService.$inject = ['$http'];
+        module.exports = DataService;
+                </code></pre>
             </section>
         </section>
 
