@@ -60,13 +60,14 @@
         </section>
 
         <section>
-            <h2>Arrow</h2>
+            <section>
+                <h2>Arrow</h2>
 
-            <p>
-                I make anonymous functions shorter!
-            </p>
+                <p>
+                    I make anonymous functions shorter!
+                </p>
 
-            <h5>ES6</h5>
+                <h5>ES6</h5>
 
             <pre><code>
                 var timeSpent = 0;
@@ -74,14 +75,42 @@
                 setTimeout(() => timeSpent + 1, 3000);
             </code></pre>
 
-            <h5>ES5</h5>
+                <h5>ES5</h5>
             <pre><code>
                 var timeSpent = 0;
 
                 setTimeout(function () {
-                return timeSpent + 1;
+                    return timeSpent + 1;
                 }, 3000);
             </code></pre>
+            </section>
+
+            <section>
+                <h2>Arrow</h2>
+
+                <p>
+                    More intuitive handling of current object context
+                </p>
+
+                <h5>ES6</h5>
+
+            <pre><code>
+            numbers.forEach((v) => {
+                if (v % 5 === 0)
+                this.fives.push(v)
+            })
+            </code></pre>
+
+                <h5>ES5</h5>
+            <pre><code>
+            var self = this;
+
+            numbers.forEach(function (v) {
+                if (v % 5 === 0)
+                self.fives.push(v);
+            });
+            </code></pre>
+            </section>
         </section>
 
         <section>
