@@ -333,6 +333,75 @@
             </section>
         </section>
 
+        <section>
+            <section>
+                <h2>Default Parameters</h2>
+                <p>So very convenient</p>
+
+                <h5>ES6</h5>
+            <pre><code>
+            function f(x, y = 7, z = 42) {
+                return x + y + z
+            }
+            </code></pre>
+
+                <h5>ES5</h5>
+            <pre><code>
+            function f (x, y, z) {
+                if (y === undefined)
+                    y = 7;
+                if (z === undefined)
+                    z = 42;
+                return x + y + z;
+            }
+            </code></pre>
+            </section>
+
+            <section>
+                <h2>Destructuring Assignment</h2>
+                <p> destructuring of Arrays into individual variables</p>
+
+                <h5>ES6</h5>
+                <pre><code>
+                var list = [ 1, 2, 3 ]
+                var [ a, , b ] = list
+                [ b, a ] = [ a, b ]
+                </code></pre>
+
+                <h5>ES5</h5>
+                <pre><code>
+                var list = [ 1, 2, 3 ];
+                var a = list[0], b = list[2];
+                var tmp = a; a = b; b = tmp;
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Destructuring Assignment</h2>
+                <p>Fail-soft destructuring, optionally with defaults.</p>
+
+                <h5>ES6</h5>
+                <pre><code>
+                var list = [ 7 ]
+                var [ a = 1, b = 3, c ] = list
+                a === 7
+                b === 3
+                c === undefined
+                </code></pre>
+
+                <h5>ES5</h5>
+                <pre><code>
+                var list = [ 7 ];
+                var a = typeof list[0] !== "undefined" ? list[0] : 1;
+                var b = typeof list[1] !== "undefined" ? list[1] : 3;
+                var c = typeof list[2] !== "undefined" ? gslist[2] : undefined;
+                a === 7;
+                b === 3;
+                c === undefined;
+                </code></pre>
+            </section>
+        </section>
+
 
         <section style="text-align: left;">
             <h1>THE END</h1>
