@@ -53,21 +53,21 @@
 
             <p>
                 <small>
-                    Created by <a href="https://github.com/camsjams">Cameron Manavian</a> / <a
-                        href="http://twitter.com/camsjams">@camsjams</a><br/>
-                    Created by <a href="https://github.com/failpunk">Justin Vencel</a>
+                    Created by <a href="https://github.com/camsjams">Cameron Manavian</a> / <a href="http://twitter.com/camsjams">@camsjams</a><br/>
+                    Created by <a href="https://github.com/failpunk">Justin Vencel</a> / <a href="http://twitter.com/failpunk">@failpunk</a><br/>
                 </small>
             </p>
         </section>
 
         <section>
-            <h2>Arrow</h2>
+            <section>
+                <h2>Arrow</h2>
 
-            <p>
-                I make anonymous functions shorter!
-            </p>
+                <p>
+                    I make anonymous functions shorter!
+                </p>
 
-            <h5>ES6</h5>
+                <h5>ES6</h5>
 
             <pre><code>
                 var timeSpent = 0;
@@ -75,14 +75,42 @@
                 setTimeout(() => timeSpent + 1, 3000);
             </code></pre>
 
-            <h5>ES5</h5>
+                <h5>ES5</h5>
             <pre><code>
                 var timeSpent = 0;
 
                 setTimeout(function () {
-                return timeSpent + 1;
+                    return timeSpent + 1;
                 }, 3000);
             </code></pre>
+            </section>
+
+            <section>
+                <h2>Arrow</h2>
+
+                <p>
+                    More intuitive handling of current object context
+                </p>
+
+                <h5>ES6</h5>
+
+            <pre><code>
+            numbers.forEach((v) => {
+                if (v % 5 === 0)
+                this.fives.push(v)
+            })
+            </code></pre>
+
+                <h5>ES5</h5>
+            <pre><code>
+            var self = this;
+
+            numbers.forEach(function (v) {
+                if (v % 5 === 0)
+                self.fives.push(v);
+            });
+            </code></pre>
+            </section>
         </section>
 
         <section>
@@ -164,6 +192,251 @@
                  </code></pre>
             </section>
             <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Template Strings</h2>
+
+                <p>
+                    in·ter·po·la·tion
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+    let total = 30;
+    let name = 'Justin';
+    let msg = `${name} your total is: ${total} (${total*1.05} with tax)`;
+
+    console.log(msg);  // "Justin your total is: 30 (31.5 with tax)"
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Angular Inline Templates</h2>
+
+                <p>
+                    Multi-line template strings
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+    template: `
+        <div class="my-directive-template">
+            <h1>Using multi-line Strings for templates</h1>
+            <p>
+                The {{::name}} of something
+            </p>
+        </div>
+        `,
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Classes</h2>
+
+                <p>
+                    Do you even prototype, bro?
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+        class Person {
+
+            constructor(name) {
+                this.name = name;
+            }
+
+            getInfo() {
+                return `My name is ${this.name}`
+            }
+        }
+                </code></pre>
+
+                <code><pre>
+        let Cam = new Person('Cameron');
+        Cam.getInfo();    // "My name is Cameron"
+                </pre></code>
+            </section>
+
+            <section>
+                <h2>Inheritance</h2>
+
+                <p>
+                    Hierarchical hell, made easy!
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+        class Jerk extends Person {
+
+            constructor(name) {
+                super(name);
+                this.jerk = true;
+            }
+
+            isJerk() {
+                return this.jerk;
+            }
+        }
+                </code></pre>
+
+                <code><pre>
+        let Justin = new Jerk();
+        Justin.getInfo();    // "My name is Justin"
+        Justin.isJerk();    // true
+                </pre></code>
+            </section>
+
+            <section>
+                <h2>Angular Services</h2>
+                <p>
+                    We now use a service, not factory
+                </p>
+
+                <pre><code>
+        app.service('DataService', require('./DataService'));
+
+        // or
+
+        import { DataService } from './DataService';
+        app.service('DataService', DataService);
+                </code></pre>
+
+            </section>
+
+            <section>
+                <h2>
+                    Writting Services
+                </h2>
+                <h5>Using an ES6 Class</h5>
+                <pre><code>
+        class DataService {
+
+            constructor($http) {
+                this.$http = $http;
+            }
+
+            getPapers() {
+                return this.$http.get('/api/papers')
+                    .then((response) => response.data);
+            }
+        }
+
+        DataService.$inject = ['$http'];
+        module.exports = DataService;
+                </code></pre>
+            </section>
+
+            <section>
+            <h2>
+                Service Dependencies
+            </h2>
+            <h5>We can have many of these</h5>
+                <pre><code>
+    class SomeService {
+
+        constructor($http, $q, $log, Dep1, Dep2, Dep3) {
+            this.$http = $http;
+            this.$q = $q;
+            this.$log = $log;
+            this.Dep1 = Dep1;
+            this.Dep2 = Dep2;
+            this.Dep3 = Dep3;
+        }
+    }
+
+    // Too redundant
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>
+                    A constructor shortcut
+                </h2>
+                <h5>Hey...remember me??</h5>
+                <pre><code>
+    class SomeService {
+
+        constructor($http, $q, $log, Dep1, Dep, Dep3) {
+            Object.assign(this, { $http, $q, $log, Dep1, Dep, Dep3 });
+        }
+    }
+
+    // Better
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Default Parameters</h2>
+                <p>So very convenient</p>
+
+                <h5>ES6</h5>
+            <pre><code>
+            function f(x, y = 7, z = 42) {
+                return x + y + z
+            }
+            </code></pre>
+
+                <h5>ES5</h5>
+            <pre><code>
+            function f (x, y, z) {
+                if (y === undefined)
+                    y = 7;
+                if (z === undefined)
+                    z = 42;
+                return x + y + z;
+            }
+            </code></pre>
+            </section>
+
+            <section>
+                <h2>Destructuring Assignment</h2>
+                <p> destructuring of Arrays into individual variables</p>
+
+                <h5>ES6</h5>
+                <pre><code>
+                var list = [ 1, 2, 3 ]
+                var [ a, , b ] = list
+                [ b, a ] = [ a, b ]
+                </code></pre>
+
+                <h5>ES5</h5>
+                <pre><code>
+                var list = [ 1, 2, 3 ];
+                var a = list[0], b = list[2];
+                var tmp = a; a = b; b = tmp;
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Destructuring Assignment</h2>
+                <p>Fail-soft destructuring, optionally with defaults.</p>
+
+                <h5>ES6</h5>
+                <pre><code>
+                var list = [ 7 ]
+                var [ a = 1, b = 3, c ] = list
+                a === 7
+                b === 3
+                c === undefined
+                </code></pre>
+
+                <h5>ES5</h5>
+                <pre><code>
+                var list = [ 7 ];
+                var a = typeof list[0] !== "undefined" ? list[0] : 1;
+                var b = typeof list[1] !== "undefined" ? list[1] : 3;
+                var c = typeof list[2] !== "undefined" ? gslist[2] : undefined;
+                a === 7;
+                b === 3;
+                c === undefined;
+                </code></pre>
             </section>
         </section>
 
