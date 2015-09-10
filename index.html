@@ -64,8 +64,10 @@
                 <h2>ECMAScript, ECMA, and JavaScript</h2>
 
                 <p>
-                    JavaScript is a programming language that is standardized by a standards body called ECMA. Kind of like W3C!
+                    JavaScript is a programming language that is standardized by a standards body called ECMA. Kind of
+                    like W3C!
                 </p>
+
                 <p>
                     JavaScript and ECMAScript are similar to many C style languages.
                 </p>
@@ -76,12 +78,15 @@
                 <p>
                     JavaScript, JScript and ActionScript are all implementations of the ECMAScript language.
                 </p>
-                <p>SpiderMonkey, Trident, and V8 also implement this specification. They are used in Firefox, IE and Chrome/Node.js/Opera respectively.</p>
+
+                <p>SpiderMonkey, Trident, and V8 also implement this specification. They are used in Firefox, IE and
+                    Chrome/Node.js/Opera respectively.</p>
             </section>
             <section>
                 <h2>What is covered under ECMAScript?</h2>
 
-                <p>The core of the language components are standardized, these work in browsers or in things like Node.js</p>
+                <p>The core of the language components are standardized, these work in browsers or in things like
+                    Node.js</p>
                 <ul>
                     <li>Language Syntax - parsing, keywords, operators</li>
                     <li>Types - booleans, numbers, strings, and objects</li>
@@ -104,7 +109,8 @@
         <section>
             <h2>ES6</h2>
 
-            <p>Will change the way JavaScript works and will bring many exciting things to an already popular language</p>
+            <p>Will change the way JavaScript works and will bring many exciting things to an already popular
+                language</p>
         </section>
 
         <section>
@@ -163,6 +169,81 @@
 
         <section>
             <section>
+                <h2>Symbols and Constants</h2>
+
+                <p>
+                    The only constants are <em>const</em>
+                </p>
+            </section>
+            <section>
+                <h2>What is a Symbol?</h2>
+
+                <p>A new primitive type of course!</p>
+                <pre><code>
+                    var computerName = Symbol('awesome desktop');
+                </code></pre>
+            </section>
+            <section>
+                <h2>Their biggest value is that they are all unique</h2>
+
+                <p>Kind of like a UUID</p>
+    <pre><code>
+        var camsComputer = Symbol('awesome desktop');
+        var camsOtherComputer = Symbol('awesome desktop');
+        // these will not equal each other!
+        console.assert(
+        camsComputer === camsOtherComputer,
+        'these are not equal!'
+        );
+        > these are not equal!
+    </code></pre>
+            </section>
+            <section>
+                <h2>Why you would use them</h2>
+
+                <h4>ES5</h4>
+                <pre><code>
+                    var USER_TYPE_AUTHOR = 'AUTHOR';
+                    var USER_TYPE_EDITOR = 'EDITOR';
+                    var USER_TYPE_ADMIN = 'ADMIN';
+
+                    function canEditPost(userType) {
+                    switch (userType) {
+                    case USER_TYPE_AUTHOR:
+                    case USER_TYPE_EDITOR:
+                    return true;
+                    default:
+                    case USER_TYPE_ADMIN:
+                    return false;
+                    }
+                    }
+                </code></pre>
+            </section>
+            <section>
+                <h2>Using symbols and constants (kind of like an enum)</h2>
+
+                <h4>ES6</h4>
+                <pre><code>
+                    const USER_TYPE_AUTHOR = Symbol();
+                    const USER_TYPE_EDITOR = Symbol();
+                    const USER_TYPE_ADMIN = Symbol();
+
+                    function canEditPost(userType) {
+                    switch (userType) {
+                    case USER_TYPE_AUTHOR:
+                    case USER_TYPE_EDITOR:
+                    return true;
+                    default:
+                    case USER_TYPE_ADMIN:
+                    return false;
+                    }
+                    }
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
                 <h2>Promises</h2>
 
                 <p>
@@ -183,13 +264,43 @@
                     <li>etc.</li>
                 </ul>
 
-                <p>With these type of events you usually do not need to worry about the state before you attached the listener.</p>
+                <p>With these type of events you usually do not need to worry about the state before you attached the
+                    listener.</p>
             </section>
             <section>
                 <h2>Where promises help</h2>
 
                 <p>
-                    But when it comes to async success/failure
+                    When it comes to asynchronous requests or operations, success/failure can become cumbersome.
+                </p>
+            </section>
+            <section>
+                <h2>Example</h2>
+
+                <h4>The infamous pyramid of doom.</h4>
+
+                 <pre><code>
+         step1(function (value1) {
+             step2(value1, function(value2) {
+                 step3(value2, function(value3) {
+                     step4(value3, function(value4) {
+                        // Do something with value4
+                     });
+                 });
+             });
+         });
+                 </code></pre>
+                source: <a href="https://github.com/kriskowal/q">https://github.com/kriskowal/q</a>
+            </section>
+            <section>
+                <h2>Think of a promise as:</h2>
+
+                <p>
+                    Well ... a <em>promise</em> to eventually having a value at some indeterminable point in the future.
+                </p>
+
+                <p>It's kind of like a way of making multiple potentially long tasks operate within a synchronous set of
+                    instructions.
                 </p>
             </section>
             <section>
