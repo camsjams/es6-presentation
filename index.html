@@ -44,9 +44,8 @@
             <h1>ES6 and You</h1>
 
             <h3>
-                <del>ES6</del>
-                <del>Harmony</del>
-                <del>EcmaScript 6</del>
+                <del>Harmony</del><br />
+                <del>EcmaScript 6</del><br />
                 <del>JavaScript 2015</del>
             </h3>
             <h4>... new features in JavaScript</h4>
@@ -89,7 +88,7 @@
                     Node.js</p>
                 <ul>
                     <li>Language Syntax - parsing, keywords, operators</li>
-                    <li>Types - booleans, numbers, strings, and objects</li>
+                    <li>Types - undefined, null, boolean, number, string, and object</li>
                     <li>Prototypes and inheritance</li>
                     <li>Built-in object and functions including Math, JSON, Array, object methods, etc</li>
                 </ul>
@@ -178,13 +177,13 @@
             <section>
                 <h2>What is a Symbol?</h2>
 
-                <p>A new primitive type of course!</p>
+                <p>A new primitive type of course! The seventh type of value in JavaScript to be exact. They are similar to Symbols in Ruby.</p>
                 <pre><code>
             var computerName = Symbol('awesome desktop');
                 </code></pre>
             </section>
             <section>
-                <h2>Their biggest value is that they are all unique</h2>
+                <h2>Their biggest value is that they are all unique, which make them great for unique object keys.</h2>
 
                 <p>Kind of like a UUID</p>
     <pre><code>
@@ -201,43 +200,43 @@
             <section>
                 <h2>Why you would use them</h2>
 
-                <h4>ES5</h4>
                 <pre><code>
-        var USER_TYPE_AUTHOR = 'AUTHOR'; // merely just a string
-        var USER_TYPE_EDITOR = 'EDITOR';
-        var USER_TYPE_ADMIN  = 'ADMIN';
+    var codeFromJustin = document.getElementById('code-block-justin');
 
-        function canEditPost(userType) {
-            switch (userType) {
-                case USER_TYPE_AUTHOR:
-                case USER_TYPE_EDITOR:
-                    return true;
-                default:
-                case USER_TYPE_ADMIN:
-                    return false;
-            }
-        }
+    if(codeFromJustin.isComplete) {
+        deployToProduction();
+    } else {
+        sendBackToDev();
+    }
+            </code></pre>
+                <small>This property key is not actually unique, furthermore anyone can see, read, and possibly modify it!</small>
+            </section>
+            <section>
+                <h2>What happens when a property key has collisions?</h2>
+
+                <pre><code>
+    var codeFromJustin = document.getElementById('code-block-justin');
+    // some unrelated key usage another developer or library uses
+    if(codeFromJustin.length > 500) {
+        codeFromJustin.isComplete = true;
+    }
                 </code></pre>
             </section>
             <section>
-                <h2>Using symbols and constants (kind of like an enum)</h2>
+                <h2>Using symbols and constants</h2>
 
                 <h4>ES6</h4>
                 <pre><code>
-        const USER_TYPE_AUTHOR = Symbol(); // actual unique values
-        const USER_TYPE_EDITOR = Symbol();
-        const USER_TYPE_ADMIN  = Symbol();
+    // create a unique symbol
+    const isComplete = Symbol("isComplete");
+    ...
+    var codeFromJustin = document.getElementById('code-block-justin');
 
-        function canEditPost(userType) {
-            switch (userType) {
-                case USER_TYPE_AUTHOR:
-                case USER_TYPE_EDITOR:
-                    return true;
-                default:
-                case USER_TYPE_ADMIN:
-                    return false;
-            }
-        }
+    if(codeFromJustin[isComplete]) {
+        deployToProduction();
+    } else {
+        sendBackToDev();
+    }
                 </code></pre>
             </section>
         </section>
@@ -275,6 +274,11 @@
                 </p>
             </section>
             <section>
+                <img src="https://mdn.mozillademos.org/files/8633/promises.png"/>
+                <br />
+                source: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>
+            </section>
+            <section>
                 <h2>Example</h2>
 
                 <h4>The infamous pyramid of doom.</h4>
@@ -293,9 +297,23 @@
                 source: <a target="_blank" href="https://github.com/kriskowal/q">https://github.com/kriskowal/q</a>
             </section>
             <section>
-                <img src="https://mdn.mozillademos.org/files/8633/promises.png"/>
-                <br />
-                source: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>
+                <h2>Example</h2>
+
+                <h4>The more manageable tower of do awesome.</h4>
+                <pre><code>
+    var step1 = new Promise(...);
+
+    step1.then(step2)
+        .then(step3)
+        .then(step4)
+        .catch(function (error) {
+            // Handle any error from any above steps
+            throw new Error('fatal error in promises:' + error.message);
+        })
+        .done(function (value4) {
+            // Do something with value4
+        });
+                </code></pre>
             </section>
             <section>
                 <h2>Think of a promise as:</h2>
