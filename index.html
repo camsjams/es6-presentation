@@ -53,21 +53,75 @@
 
             <p>
                 <small>
-                    Created by <a href="https://github.com/camsjams">Cameron Manavian</a> / <a
-                        href="http://twitter.com/camsjams">@camsjams</a><br/>
-                    Created by <a href="https://github.com/failpunk">Justin Vencel</a>
+                    Created by <a href="https://github.com/camsjams">Cameron Manavian</a> / <a href="http://twitter.com/camsjams">@camsjams</a><br/>
+                    Created by <a href="https://github.com/failpunk">Justin Vencel</a> / <a href="http://twitter.com/failpunk">@failpunk</a><br/>
                 </small>
             </p>
         </section>
 
         <section>
-            <h2>Arrow</h2>
+            <section>
+                <h2>ECMAScript, ECMA, and JavaScript</h2>
 
-            <p>
-                I make anonymous functions shorter!
-            </p>
+                <p>
+                    JavaScript is a programming language that is standardized by a standards body called ECMA. Kind of
+                    like W3C!
+                </p>
 
-            <h5>ES6</h5>
+                <p>
+                    JavaScript and ECMAScript are similar to many C style languages.
+                </p>
+            </section>
+            <section>
+                <h2>Family of ECMA</h2>
+
+                <p>
+                    JavaScript, JScript and ActionScript are all implementations of the ECMAScript language.
+                </p>
+
+                <p>SpiderMonkey, Trident, and V8 also implement this specification. They are used in Firefox, IE and
+                    Chrome/Node.js/Opera respectively.</p>
+            </section>
+            <section>
+                <h2>What is covered under ECMAScript?</h2>
+
+                <p>The core of the language components are standardized, these work in browsers or in things like
+                    Node.js</p>
+                <ul>
+                    <li>Language Syntax - parsing, keywords, operators</li>
+                    <li>Types - booleans, numbers, strings, and objects</li>
+                    <li>Prototypes and inheritance</li>
+                    <li>Built-in object and functions including Math, JSON, Array, object methods, etc</li>
+                </ul>
+            </section>
+            <section>
+                <h2>What is <strong>not</strong> covered under ECMAScript?</h2>
+
+                <p>Not considered <em>core</em> JavaScript features</p>
+                <ul>
+                    <li>HTML and CSS related features</li>
+                    <li>DOM</li>
+                    <li>DOM related APIs</li>
+                </ul>
+            </section>
+        </section>
+
+        <section>
+            <h2>ES6</h2>
+
+            <p>Will change the way JavaScript works and will bring many exciting things to an already popular
+                language</p>
+        </section>
+
+        <section>
+            <section>
+                <h2>Arrow</h2>
+
+                <p>
+                    I make anonymous functions shorter!
+                </p>
+
+                <h5>ES6</h5>
 
             <pre><code>
                 var timeSpent = 0;
@@ -75,14 +129,230 @@
                 setTimeout(() => timeSpent + 1, 3000);
             </code></pre>
 
-            <h5>ES5</h5>
+                <h5>ES5</h5>
             <pre><code>
                 var timeSpent = 0;
 
                 setTimeout(function () {
-                return timeSpent + 1;
+                    return timeSpent + 1;
                 }, 3000);
             </code></pre>
+            </section>
+
+            <section>
+                <h2>Arrow</h2>
+
+                <p>
+                    More intuitive handling of current object context
+                </p>
+
+                <h5>ES6</h5>
+
+            <pre><code>
+            numbers.forEach((v) => {
+                if (v % 5 === 0)
+                this.fives.push(v)
+            })
+            </code></pre>
+
+                <h5>ES5</h5>
+            <pre><code>
+            var self = this;
+
+            numbers.forEach(function (v) {
+                if (v % 5 === 0)
+                self.fives.push(v);
+            });
+            </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Symbols and Constants</h2>
+
+                <p>
+                    The only constants are <em>const</em>
+                </p>
+            </section>
+            <section>
+                <h2>What is a Symbol?</h2>
+
+                <p>A new primitive type of course!</p>
+                <pre><code>
+            var computerName = Symbol('awesome desktop');
+                </code></pre>
+            </section>
+            <section>
+                <h2>Their biggest value is that they are all unique</h2>
+
+                <p>Kind of like a UUID</p>
+    <pre><code>
+        var camsComputer = Symbol('awesome desktop');
+        var camsOtherComputer = Symbol('awesome desktop');
+        // these will not equal each other!
+        console.assert(
+            camsComputer === camsOtherComputer,
+            'these are not equal!'
+        );
+        > these are not equal!
+    </code></pre>
+            </section>
+            <section>
+                <h2>Why you would use them</h2>
+
+                <h4>ES5</h4>
+                <pre><code>
+        var USER_TYPE_AUTHOR = 'AUTHOR'; // merely just a string
+        var USER_TYPE_EDITOR = 'EDITOR';
+        var USER_TYPE_ADMIN  = 'ADMIN';
+
+        function canEditPost(userType) {
+            switch (userType) {
+                case USER_TYPE_AUTHOR:
+                case USER_TYPE_EDITOR:
+                    return true;
+                default:
+                case USER_TYPE_ADMIN:
+                    return false;
+            }
+        }
+                </code></pre>
+            </section>
+            <section>
+                <h2>Using symbols and constants (kind of like an enum)</h2>
+
+                <h4>ES6</h4>
+                <pre><code>
+        const USER_TYPE_AUTHOR = Symbol(); // actual unique values
+        const USER_TYPE_EDITOR = Symbol();
+        const USER_TYPE_ADMIN  = Symbol();
+
+        function canEditPost(userType) {
+            switch (userType) {
+                case USER_TYPE_AUTHOR:
+                case USER_TYPE_EDITOR:
+                    return true;
+                default:
+                case USER_TYPE_ADMIN:
+                    return false;
+            }
+        }
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Promises</h2>
+
+                <p>
+                    Promises are now a standard feature in JavaScript
+                </p>
+            </section>
+            <section>
+                <h2>Events vs Promises</h2>
+
+                <p>
+                    Events are best used for actions that can happen multiple times on the same element, such as:
+                </p>
+
+                <ul>
+                    <li>click</li>
+                    <li>touchstart</li>
+                    <li>submit</li>
+                    <li>etc.</li>
+                </ul>
+
+                <p>With these type of events you usually do not need to worry about the state before you attached the
+                    listener.</p>
+            </section>
+            <section>
+                <h2>Where promises help</h2>
+
+                <p>
+                    When it comes to asynchronous requests or operations, success/failure can become cumbersome.
+                </p>
+            </section>
+            <section>
+                <h2>Example</h2>
+
+                <h4>The infamous pyramid of doom.</h4>
+
+                 <pre><code>
+         step1(function (value1) {
+             step2(value1, function(value2) {
+                 step3(value2, function(value3) {
+                     step4(value3, function(value4) {
+                        // Do something with value4
+                     });
+                 });
+             });
+         });
+                 </code></pre>
+                source: <a target="_blank" href="https://github.com/kriskowal/q">https://github.com/kriskowal/q</a>
+            </section>
+            <section>
+                <img src="https://mdn.mozillademos.org/files/8633/promises.png"/>
+                <br />
+                source: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>
+            </section>
+            <section>
+                <h2>Think of a promise as:</h2>
+
+                <p>
+                    Well ...<br /> a promise to eventually having a value at some indeterminable point in the future.
+                </p>
+
+                <small>It's kind of like a way of making multiple potentially long tasks operate within a synchronous set of
+                    instructions.
+                </small>
+            </section>
+            <section>
+                <h2>Promise Analogy: Part 1</h2>
+
+                <p>Every morning, Samwise asks Hodor to go out and collect food from the traps.</p>
+
+                <p class="fragment">Hodor promises Samwise that he will go out and collect the trappings.</p>
+
+                <small class="fragment">Hodor.</small>
+                <p class="fragment">Then Samwise decides that if:</p>
+                <ol>
+                   <li class="fragment">Hodor finds rabbit, they'll have rabbit stew with some potatoes.</li>
+                   <li class="fragment">Hodor finds pheasant, they'll eat roast pheasant.</li>
+                   <li class="fragment">Hodor finds no trappings, they'll eat Lembas bread.</li>
+                </ol>
+                <small class="fragment">The promise is now <em>pending</em></small>
+            </section>
+            <section data-background="http://i.giphy.com/AxjfeKuEG4SK4.gif">
+            </section>
+            <section>
+                <h2>Promise Analogy: Part 2</h2>
+
+                <p>Soon Hodor returns.</p>
+
+                <p class="fragment">Different outcomes may have occurred.</p>
+
+                <ol>
+                    <li class="fragment">
+                        Promise <span style="color: darkseagreen">fulfilled</span>: Hodor kept his promise and went to the trap, and found rabbit. Rabbit stew it is!
+                    </li>
+                    <li class="fragment">
+                        Promise <span style="color: darkseagreen">fulfilled</span>: Hodor kept his promise and went to the trap, and found pheasant. Time to roast!
+                    </li>
+                    <li class="fragment">
+                        Promise <span style="color: darkseagreen">fulfilled</span>: Hodor kept his promise and went to the trap, and found nothing. Time to eat bread!
+                    </li>
+                    <li class="fragment">
+                        Promise <span style="color: indianred">rejected</span>: Hodor went out to collect the traps but saw White Walkers and Nazgûl - it was too dangerous to venture out. Time to eat bread!
+                    </li>
+                    <li class="fragment">
+                        Promise <span style="color: indianred">rejected</span>: Hodor. Time to eat bread!
+                    </li>
+                </ol>
+            </section>
+            <section data-background="http://i.giphy.com/77IsrFANBT0RO.gif">
+            </section>
         </section>
 
         <section>
@@ -112,7 +382,7 @@
                         // clone
                         var copy = _.extend({}, o1);
                         // merge
-                        var obj = _.extend({}, o2);
+                        var obj = _.extend(o1, o2);
                     </code></pre>
             </section>
             <section>
@@ -126,6 +396,253 @@
                      // merge
                      var obj = Object.assign(o1, o2);
                  </code></pre>
+            </section>
+            <section data-background="http://i.giphy.com/90F8aUepslB84.gif">
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Template Strings</h2>
+
+                <p>
+                    in·ter·po·la·tion
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+let total = 30;
+let name = 'Justin';
+let msg = `${name} your total is: ${total} (${total*1.05} + tax)`;
+
+console.log(msg);  // "Justin your total is: 30 (31.5 + tax)"
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Angular Inline Templates</h2>
+
+                <p>
+                    Multi-line template strings
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+    template: `
+        <div class="my-directive-template">
+            <h1>Using multi-line Strings for templates</h1>
+            <p>
+                The {{::name}} of something
+            </p>
+        </div>
+        `,
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Classes</h2>
+
+                <p>
+                    Do you even prototype, bro?
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+        class Person {
+
+            constructor(name) {
+                this.name = name;
+            }
+
+            getInfo() {
+                return `My name is ${this.name}`
+            }
+        }
+                </code></pre>
+
+                <code><pre>
+        let Cam = new Person('Cameron');
+        Cam.getInfo();    // "My name is Cameron"
+                </pre></code>
+            </section>
+
+            <section>
+                <h2>Inheritance</h2>
+
+                <p>
+                    Hierarchical hell, made easy!
+                </p>
+
+                <h5>ES6</h5>
+                <pre><code>
+        class Jerk extends Person {
+
+            constructor(name) {
+                super(name);
+                this.jerk = true;
+            }
+
+            isJerk() {
+                return this.jerk;
+            }
+        }
+                </code></pre>
+
+                <code><pre>
+        let Justin = new Jerk();
+        Justin.getInfo();    // "My name is Justin"
+        Justin.isJerk();    // true
+                </pre></code>
+            </section>
+
+            <section>
+                <h2>Angular Services</h2>
+                <p>
+                    We now use a service, not factory
+                </p>
+
+                <pre><code>
+        app.service('DataService', require('./DataService'));
+
+        // or
+
+        import { DataService } from './DataService';
+        app.service('DataService', DataService);
+                </code></pre>
+
+            </section>
+
+            <section>
+                <h2>
+                    Writting Services
+                </h2>
+                <h5>Using an ES6 Class</h5>
+                <pre><code>
+        class DataService {
+
+            constructor($http) {
+                this.$http = $http;
+            }
+
+            getPapers() {
+                return this.$http.get('/api/papers')
+                    .then((response) => response.data);
+            }
+        }
+
+        DataService.$inject = ['$http'];
+        module.exports = DataService;
+                </code></pre>
+            </section>
+
+            <section>
+            <h2>
+                Service Dependencies
+            </h2>
+            <h5>We can have many of these</h5>
+                <pre><code>
+    class SomeService {
+
+        constructor($http, $q, $log, Dep1, Dep2, Dep3) {
+            this.$http = $http;
+            this.$q = $q;
+            this.$log = $log;
+            this.Dep1 = Dep1;
+            this.Dep2 = Dep2;
+            this.Dep3 = Dep3;
+        }
+    }
+
+    // Too redundant
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>
+                    A constructor shortcut
+                </h2>
+                <h5>Hey...remember me??</h5>
+                <pre><code>
+    class SomeService {
+
+        constructor($http, $q, $log, Dep1, Dep, Dep3) {
+            Object.assign(this, { $http, $q, $log, Dep1, Dep, Dep3 });
+        }
+    }
+
+    // Better
+                </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
+                <h2>Default Parameters</h2>
+                <p>So very convenient</p>
+
+                <h5>ES6</h5>
+            <pre><code>
+            function f(x, y = 7, z = 42) {
+                return x + y + z
+            }
+            </code></pre>
+
+                <h5>ES5</h5>
+            <pre><code>
+            function f (x, y, z) {
+                if (y === undefined)
+                    y = 7;
+                if (z === undefined)
+                    z = 42;
+                return x + y + z;
+            }
+            </code></pre>
+            </section>
+
+            <section>
+                <h2>Destructuring Assignment</h2>
+                <p> destructuring of Arrays into individual variables</p>
+
+                <h5>ES6</h5>
+                <pre><code>
+                var list = [ 1, 2, 3 ]
+                var [ a, , b ] = list
+                [ b, a ] = [ a, b ]
+                </code></pre>
+
+                <h5>ES5</h5>
+                <pre><code>
+                var list = [ 1, 2, 3 ];
+                var a = list[0], b = list[2];
+                var tmp = a; a = b; b = tmp;
+                </code></pre>
+            </section>
+
+            <section>
+                <h2>Destructuring Assignment</h2>
+                <p>Fail-soft destructuring, optionally with defaults.</p>
+
+                <h5>ES6</h5>
+                <pre><code>
+                var list = [ 7 ]
+                var [ a = 1, b = 3, c ] = list
+                a === 7
+                b === 3
+                c === undefined
+                </code></pre>
+
+                <h5>ES5</h5>
+                <pre><code>
+                var list = [ 7 ];
+                var a = typeof list[0] !== "undefined" ? list[0] : 1;
+                var b = typeof list[1] !== "undefined" ? list[1] : 3;
+                var c = typeof list[2] !== "undefined" ? gslist[2] : undefined;
+                a === 7;
+                b === 3;
+                c === undefined;
+                </code></pre>
             </section>
         </section>
 
