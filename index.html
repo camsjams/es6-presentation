@@ -180,7 +180,7 @@
 
                 <p>A new primitive type of course!</p>
                 <pre><code>
-                    var computerName = Symbol('awesome desktop');
+            var computerName = Symbol('awesome desktop');
                 </code></pre>
             </section>
             <section>
@@ -192,8 +192,8 @@
         var camsOtherComputer = Symbol('awesome desktop');
         // these will not equal each other!
         console.assert(
-        camsComputer === camsOtherComputer,
-        'these are not equal!'
+            camsComputer === camsOtherComputer,
+            'these are not equal!'
         );
         > these are not equal!
     </code></pre>
@@ -203,20 +203,20 @@
 
                 <h4>ES5</h4>
                 <pre><code>
-                    var USER_TYPE_AUTHOR = 'AUTHOR';
-                    var USER_TYPE_EDITOR = 'EDITOR';
-                    var USER_TYPE_ADMIN = 'ADMIN';
+        var USER_TYPE_AUTHOR = 'AUTHOR'; // merely just a string
+        var USER_TYPE_EDITOR = 'EDITOR';
+        var USER_TYPE_ADMIN  = 'ADMIN';
 
-                    function canEditPost(userType) {
-                    switch (userType) {
-                    case USER_TYPE_AUTHOR:
-                    case USER_TYPE_EDITOR:
+        function canEditPost(userType) {
+            switch (userType) {
+                case USER_TYPE_AUTHOR:
+                case USER_TYPE_EDITOR:
                     return true;
-                    default:
-                    case USER_TYPE_ADMIN:
+                default:
+                case USER_TYPE_ADMIN:
                     return false;
-                    }
-                    }
+            }
+        }
                 </code></pre>
             </section>
             <section>
@@ -224,20 +224,20 @@
 
                 <h4>ES6</h4>
                 <pre><code>
-                    const USER_TYPE_AUTHOR = Symbol();
-                    const USER_TYPE_EDITOR = Symbol();
-                    const USER_TYPE_ADMIN = Symbol();
+        const USER_TYPE_AUTHOR = Symbol(); // actual unique values
+        const USER_TYPE_EDITOR = Symbol();
+        const USER_TYPE_ADMIN  = Symbol();
 
-                    function canEditPost(userType) {
-                    switch (userType) {
-                    case USER_TYPE_AUTHOR:
-                    case USER_TYPE_EDITOR:
+        function canEditPost(userType) {
+            switch (userType) {
+                case USER_TYPE_AUTHOR:
+                case USER_TYPE_EDITOR:
                     return true;
-                    default:
-                    case USER_TYPE_ADMIN:
+                default:
+                case USER_TYPE_ADMIN:
                     return false;
-                    }
-                    }
+            }
+        }
                 </code></pre>
             </section>
         </section>
@@ -290,7 +290,12 @@
              });
          });
                  </code></pre>
-                source: <a href="https://github.com/kriskowal/q">https://github.com/kriskowal/q</a>
+                source: <a target="_blank" href="https://github.com/kriskowal/q">https://github.com/kriskowal/q</a>
+            </section>
+            <section>
+                <img src="https://mdn.mozillademos.org/files/8633/promises.png"/>
+                <br />
+                source: <a target="_blank" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise">MDN</a>
             </section>
             <section>
                 <h2>Think of a promise as:</h2>
