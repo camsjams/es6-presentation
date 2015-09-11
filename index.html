@@ -357,6 +357,76 @@
 
         <section>
             <section>
+                <h2>let</h2>
+
+                <p>
+                    ... there be light.
+                </p>
+            </section>
+            <section>
+                <h2>Attaching listeners in a loop</h2>
+                <p>This famous interview question will now be somewhat deprecated.</p>
+            <pre><code>
+    var list = document.getElementById('item-list');
+
+    for (var i = 1; i <= 5; i++) {
+        var item = document.createElement("LI");
+        item.appendChild(
+            document.createTextNode("Item number " + i)
+        );
+
+        var j = i;
+        item.onclick = function (ev) {
+            console.log("Item " + j + " is clicked.");
+        };
+        list.appendChild(item);
+    }
+            </code></pre>
+                <small>On every click, it will say "Item 5 is clicked."</small>
+            </section>
+            <section>
+                <h2>Solving the variable scope</h2>
+                <h4>ES5</h4><pre><code>
+    var list = document.getElementById('item-list');
+
+    for (var i = 1; i <= 5; i++) {
+        var item = document.createElement('LI');
+        item.appendChild(
+            document.createTextNode('Item number ' + i)
+        );
+        (function (j) {
+            item.onclick = function (ev) {
+                console.log('Item ' + j + ' is clicked.');
+            };
+        }) (i);
+        list.appendChild(item);
+    }
+            </code></pre>
+            </section>
+            <section>
+                <h2>Solving the variable scope</h2>
+                <h4>ES6</h4>
+            <pre><code>
+    var list = document.getElementById('item-list');
+
+    for (var i = 1; i <= 5; i++) {
+        var item = document.createElement("LI");
+        item.appendChild(
+                document.createTextNode("Item number " + i)
+        );
+
+        let j = i;
+        item.onclick = function (ev) {
+            console.log("Item " + j + " is clicked.");
+        };
+        list.appendChild(item);
+    }
+            </code></pre>
+            </section>
+        </section>
+
+        <section>
+            <section>
                 <h2>Object.assign()</h2>
 
                 <p>
