@@ -458,8 +458,12 @@
                         var o2 = { b: 2 };
                         // clone
                         var copy = $.extend({}, o1);
+                        console.log(copy);
+                        > { a: 1 }
                         // merge
                         var obj = $.extend(o1, o2);
+                        console.log(obj);
+                        > { a: 1, b: 2 }
                     </code></pre>
             </section>
             <section>
