@@ -1,5 +1,5 @@
 # ES6 Presentation
-[direct link coming soon](#coming-soon)
+[View presentation here](http://etalx.com/es6-presentation/)
 
 ## Install
 >       $ bower install
