@@ -301,15 +301,57 @@
                 <h2>Think of a promise as:</h2>
 
                 <p>
-                    Well ... a <em>promise</em> to eventually having a value at some indeterminable point in the future.
+                    Well ...<br /> a promise to eventually having a value at some indeterminable point in the future.
                 </p>
 
-                <p>It's kind of like a way of making multiple potentially long tasks operate within a synchronous set of
+                <small>It's kind of like a way of making multiple potentially long tasks operate within a synchronous set of
                     instructions.
-                </p>
+                </small>
             </section>
             <section>
-                <img src="https://mdn.mozillademos.org/files/8633/promises.png"/>
+                <h2>Promise Analogy: Part 1</h2>
+
+                <p>Every morning, Samwise asks Hodor to go out and collect food from the traps.</p>
+
+                <p class="fragment">Hodor promises Samwise that he will go out and collect the trappings.</p>
+
+                <small class="fragment">Hodor.</small>
+                <p class="fragment">Then Samwise decides that if:</p>
+                <ol>
+                   <li class="fragment">Hodor finds rabbit, they'll have rabbit stew with some potatoes.</li>
+                   <li class="fragment">Hodor finds pheasant, they'll eat roast pheasant.</li>
+                   <li class="fragment">Hodor finds no trappings, they'll eat Lembas bread.</li>
+                </ol>
+                <small class="fragment">The promise is now <em>pending</em></small>
+            </section>
+            <section data-background="http://i.giphy.com/AxjfeKuEG4SK4.gif">
+            </section>
+            <section>
+                <h2>Promise Analogy: Part 2</h2>
+
+                <p>Soon Hodor returns.</p>
+
+                <p class="fragment">Different outcomes may have occurred.</p>
+
+                <ol>
+                    <li class="fragment">
+                        Promise <span style="color: darkseagreen">fulfilled</span>: Hodor kept his promise and went to the trap, and found rabbit. Rabbit stew it is!
+                    </li>
+                    <li class="fragment">
+                        Promise <span style="color: darkseagreen">fulfilled</span>: Hodor kept his promise and went to the trap, and found pheasant. Time to roast!
+                    </li>
+                    <li class="fragment">
+                        Promise <span style="color: darkseagreen">fulfilled</span>: Hodor kept his promise and went to the trap, and found nothing. Time to eat bread!
+                    </li>
+                    <li class="fragment">
+                        Promise <span style="color: indianred">rejected</span>: Hodor went out to collect the traps but saw White Walkers and Nazgûl - it was too dangerous to venture out. Time to eat bread!
+                    </li>
+                    <li class="fragment">
+                        Promise <span style="color: indianred">rejected</span>: Hodor. Time to eat bread!
+                    </li>
+                </ol>
+            </section>
+            <section data-background="http://i.giphy.com/77IsrFANBT0RO.gif">
             </section>
         </section>
 
@@ -369,11 +411,11 @@
 
                 <h5>ES6</h5>
                 <pre><code>
-    let total = 30;
-    let name = 'Justin';
-    let msg = `${name} your total is: ${total} (${total*1.05} with tax)`;
+let total = 30;
+let name = 'Justin';
+let msg = `${name} your total is: ${total} (${total*1.05} + tax)`;
 
-    console.log(msg);  // "Justin your total is: 30 (31.5 with tax)"
+console.log(msg);  // "Justin your total is: 30 (31.5 + tax)"
                 </code></pre>
             </section>
 
