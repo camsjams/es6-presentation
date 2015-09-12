@@ -101,6 +101,7 @@
                     <li>HTML and CSS related features</li>
                     <li>DOM</li>
                     <li>DOM related APIs</li>
+                    <li>Node.js related APIs or modules</li>
                 </ul>
             </section>
         </section>
@@ -201,9 +202,9 @@
                 <h2>Why you would use them</h2>
 
                 <pre><code>
-    var codeFromJustin = document.getElementById('code-block-justin');
+    var codeFromCameron = document.getElementById('code-block-justin');
 
-    if(codeFromJustin.isComplete) {
+    if(codeFromCameron.isComplete) {
         deployToProduction();
     } else {
         sendBackToDev();
@@ -215,10 +216,10 @@
                 <h2>What happens when a property key has collisions?</h2>
 
                 <pre><code>
-    var codeFromJustin = document.getElementById('code-block-justin');
+    var codeFromCameron = document.getElementById('code-block-justin');
     // some unrelated key usage another developer or library uses
-    if(codeFromJustin.length > 500) {
-        codeFromJustin.isComplete = true;
+    if(codeFromCameron.length > 500) {
+        codeFromCameron.isComplete = true;
     }
                 </code></pre>
             </section>
@@ -270,7 +271,7 @@
                 <h2>Where promises help</h2>
 
                 <p>
-                    When it comes to asynchronous requests or operations, success/failure can become cumbersome.
+                    When it comes to asynchronous requests or operations, tracking all successes and failures can become cumbersome.
                 </p>
             </section>
             <section>
@@ -340,7 +341,7 @@
                    <li class="fragment">Hodor finds pheasant, they'll eat roast pheasant.</li>
                    <li class="fragment">Hodor finds no trappings, they'll eat Lembas bread.</li>
                 </ol>
-                <small class="fragment">The promise is now <em>pending</em></small>
+                <small class="fragment">The promise is now <span style="color: cornflowerblue">pending</span></small>
             </section>
             <section data-background="http://i.giphy.com/AxjfeKuEG4SK4.gif">
             </section>
@@ -378,7 +379,7 @@
                 <h2>let</h2>
 
                 <p>
-                    ... there be light.
+                    ... there be <span style="color: yellow">light</span>.
                 </p>
             </section>
             <section>
@@ -416,7 +417,7 @@
             item.onclick = function (ev) {
                 console.log('Item ' + j + ' is clicked.');
             };
-        }) (i);
+        })(i);
         list.appendChild(item);
     }
             </code></pre>
@@ -554,10 +555,10 @@ console.log(msg);  // "Justin your total is: 30 (31.5 + tax)"
         }
                 </code></pre>
 
-                <code><pre>
+                <pre><code>
         let Cam = new Person('Cameron');
         Cam.getInfo();    // "My name is Cameron"
-                </pre></code>
+                </code></pre>
             </section>
 
             <section>
@@ -582,11 +583,11 @@ console.log(msg);  // "Justin your total is: 30 (31.5 + tax)"
         }
                 </code></pre>
 
-                <code><pre>
+                <pre><code>
         let Justin = new Jerk();
         Justin.getInfo();    // "My name is Justin"
-        Justin.isJerk();    // true
-                </pre></code>
+        Justin.isJerk();     // true
+                </code></pre>
             </section>
 
             <section>
@@ -608,7 +609,7 @@ console.log(msg);  // "Justin your total is: 30 (31.5 + tax)"
 
             <section>
                 <h2>
-                    Writting Services
+                    Writing Services
                 </h2>
                 <h5>Using an ES6 Class</h5>
                 <pre><code>
@@ -677,7 +678,7 @@ console.log(msg);  // "Justin your total is: 30 (31.5 + tax)"
                 <h5>ES6</h5>
             <pre><code>
             function f(x, y = 7, z = 42) {
-                return x + y + z
+                return x + y + z;
             }
             </code></pre>
 
@@ -699,16 +700,18 @@ console.log(msg);  // "Justin your total is: 30 (31.5 + tax)"
 
                 <h5>ES6</h5>
                 <pre><code>
-                var list = [ 1, 2, 3 ]
-                var [ a, , b ] = list
-                [ b, a ] = [ a, b ]
+                var list = [ 1, 2, 3 ];
+                var [ a, , b ] = list;
+                [ b, a ] = [ a, b ];
                 </code></pre>
 
                 <h5>ES5</h5>
                 <pre><code>
                 var list = [ 1, 2, 3 ];
                 var a = list[0], b = list[2];
-                var tmp = a; a = b; b = tmp;
+                var tmp = a;
+                a = b;
+                b = tmp;
                 </code></pre>
             </section>
 
@@ -718,8 +721,8 @@ console.log(msg);  // "Justin your total is: 30 (31.5 + tax)"
 
                 <h5>ES6</h5>
                 <pre><code>
-                var list = [ 7 ]
-                var [ a = 1, b = 3, c ] = list
+                var list = [ 7 ];
+                var [ a = 1, b = 3, c ] = list;
                 a === 7
                 b === 3
                 c === undefined
