@@ -178,7 +178,7 @@
             <section>
                 <h2>What is a Symbol?</h2>
 
-                <p>A new primitive type of course! The seventh type of value in JavaScript to be exact. They are similar to Symbols in Ruby.</p>
+                <p>A new primitive type of course! The seventh type of value in JavaScript to be exact. They are similar to Symbols in Ruby, but are not the same exact thing.</p>
                 <pre><code>
             var computerName = Symbol('awesome desktop');
                 </code></pre>
@@ -217,11 +217,18 @@
 
                 <pre><code>
     var codeFromCameron = document.getElementById('code-block-justin');
-    // some unrelated key usage another developer or library uses
+    // some unrelated key changes another developer or library makes
     if(codeFromCameron.length > 500) {
         codeFromCameron.isComplete = true;
     }
+
+    // the property can be manipulated via multiple methods
+    codeFromDev.isComplete = true;    // dot notation
+    codeFromDev['isComplete'] = true; // bracket notation
+    var key = 'isComplete';
+    codeFromDev[key] = true;          // bracket notation with variables
                 </code></pre>
+                <small>Additionally, it could be changed while iterating over the object's properties via a loop.</small>
             </section>
             <section>
                 <h2>Using symbols and constants</h2>
@@ -238,7 +245,24 @@
     } else {
         sendBackToDev();
     }
+    codeFromJustin[isComplete] != codeFromJustin.isComplete
+    codeFromJustin[isComplete] != codeFromJustin['isComplete']
                 </code></pre>
+                <small><code>codeFromJustin[isComplete]</code> can only be obtained by having a reference to <code>isComplete</code></small>
+            </section>
+            <section>
+                <h2>Another Symbol example</h2>
+
+                <pre><code>
+                    log.levels = {
+                        LOG: Symbol('log'),
+                        INFO: Symbol('info'),
+                        WARN: Symbol('warn'),
+                    };
+                    log(log.levels.INFO, 'We are about 1/3 of the way through the presentation!');
+                    log(log.levels.WARN, 'Things are going to get a little more complicated.');
+                </code></pre>
+                <small>In older JavaScript implementations of this log class, we might have used a number or string for the log levels.</small>
             </section>
         </section>
 
