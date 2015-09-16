@@ -331,12 +331,12 @@ log(log.levels.WARN, 'Things are going to get a little more complicated.');
     step1.then(step2)
         .then(step3)
         .then(step4)
+        .then(function (value4) {
+            // Do something with value4
+        })
         .catch(function (error) {
             // Handle any error from any above steps
             throw new Error('fatal error in promises:' + error.message);
-        })
-        .done(function (value4) {
-            // Do something with value4
         });
                 </code></pre>
             </section>
@@ -724,18 +724,18 @@ console.log(msg);  // "Justin your total is: 30 (31.5 + tax)"
 
                 <h5>ES6</h5>
                 <pre><code>
-                var list = [ 1, 2, 3 ];
-                var [ a, , b ] = list;
-                [ b, a ] = [ a, b ];
+            var list = [ 1, 2, 3 ];
+            var [ a, , b ] = list;
+            [ b, a ] = [ a, b ];
                 </code></pre>
 
                 <h5>ES5</h5>
                 <pre><code>
-                var list = [ 1, 2, 3 ];
-                var a = list[0], b = list[2];
-                var tmp = a;
-                a = b;
-                b = tmp;
+            var list = [ 1, 2, 3 ];
+            var a = list[0], b = list[2];
+            var tmp = a;
+            a = b;
+            b = tmp;
                 </code></pre>
             </section>
 
@@ -745,22 +745,22 @@ console.log(msg);  // "Justin your total is: 30 (31.5 + tax)"
 
                 <h5>ES6</h5>
                 <pre><code>
-                var list = [ 7 ];
-                var [ a = 1, b = 3, c ] = list;
-                a === 7
-                b === 3
-                c === undefined
+    var list = [ 7 ];
+    var [ a = 1, b = 3, c ] = list;
+    a === 7
+    b === 3
+    c === undefined
                 </code></pre>
 
                 <h5>ES5</h5>
                 <pre><code>
-                var list = [ 7 ];
-                var a = typeof list[0] !== "undefined" ? list[0] : 1;
-                var b = typeof list[1] !== "undefined" ? list[1] : 3;
-                var c = typeof list[2] !== "undefined" ? gslist[2] : undefined;
-                a === 7;
-                b === 3;
-                c === undefined;
+    var list = [ 7 ];
+    var a = typeof list[0] !== "undefined" ? list[0] : 1;
+    var b = typeof list[1] !== "undefined" ? list[1] : 3;
+    var c = typeof list[2] !== "undefined" ? gslist[2] : undefined;
+    a === 7;
+    b === 3;
+    c === undefined;
                 </code></pre>
             </section>
         </section>
